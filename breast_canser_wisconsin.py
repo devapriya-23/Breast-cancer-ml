@@ -63,3 +63,15 @@ print("\nConfusion Matrix:\n",conf_matrix)
 #Interpretation of coefficient
 print("\nIntrpreation of coefficient:\n",model.coef_)
 
+#Visualization
+fpr,tpr,thresholds=roc_curve(y_test,y_prob)
+roc_auc_value=auc(fpr,tpr)
+plt.figure(figsize=(8,6))
+plt.plot(fpr,tpr,color='darkorange',lw=2,label=f'ROC curve(AUC={roc_auc_value:.3f})')
+plt.plot([0,1],[0,1],color='red',linestyle='--')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC & AUC Curve',fontsize=13)
+plt.legend(loc='lower right')
+plt.show()
+
